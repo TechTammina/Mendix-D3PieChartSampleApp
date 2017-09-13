@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="TamminaDThreePieChart.widget.TamminaDThreePieChart" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>TamminaDThreePieChart</name>
+    <description>The description of this widget.</description>
+
+    <icon />
+
+    <properties>
+        <property key="title" type="string" required="false" defaultValue="">
+            <caption>Title</caption>
+            <category>Title</category>
+            <description>Title of the Pie chart</description>
+        </property>
+
+         <property key="subTitle" type="string" required="false" defaultValue="">
+            <caption>Subtitle</caption>
+            <category>Title</category>
+            <description>Sub-title of the Pie chart</description>
+        </property>
+
+        <property key="titleLocation" type="enumeration" defaultValue="topLeft" required="true">
+            <caption>Title Location</caption>
+            <category>Title</category>
+            <description>Position of the Title, Sub title of the chart</description>
+            <enumerationValues>
+                <enumerationValue key="topLeft">Top-left</enumerationValue>
+                <enumerationValue key="topCenter">Top-center</enumerationValue>
+                <enumerationValue key="pieCenter">Pie-center(Donuts only)</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="titleColor" type="string" required="true" defaultValue="#333333">
+            <caption>Title Color</caption>
+            <category>Title</category>
+            <description>Font color of the Title</description>
+        </property>
+
+        <property key="titleFontStyle" type="enumeration" defaultValue="opensans" required="true">
+            <caption>Title Font Style</caption>
+            <category>Title</category>
+            <description>Font style of the Title</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+         <property key="titleFontSize" type="integer" required="true" defaultValue="24">
+            <caption>Title Font Size</caption>
+            <category>Title</category>
+            <description>Size of the font in px</description>
+        </property>
+
+        <property key="subTitleColor" type="string" required="true" defaultValue="#999999">
+            <caption>Sub Title Color</caption>
+            <category>Title</category>
+            <description>Font Color of the Sub Title</description>
+        </property>
+
+        <property key="subTitleFontStyle" type="enumeration" defaultValue="opensans" required="true">
+            <caption>Sub Title Font Style</caption>
+            <category>Title</category>
+            <description>Font style of the Sub-title</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="subTitleFontSize" type="integer" required="true" defaultValue="12">
+            <caption>Sub Title Font Size</caption>
+            <category>Title</category>
+            <description>Font size of sub-title in px</description>
+        </property>
+
+        <property key="titleSubtitlePadding" type="integer" required="true" defaultValue="9">
+            <caption>Title Subtitle Padding</caption>
+            <category>Title</category>
+            <description>Padding between Title and Sub-tilte in px</description>
+        </property>
+
+        <property key="canvasWidth" type="integer" required="true" defaultValue="590">
+            <caption>Canvas Width</caption>
+            <category>Size</category>
+            <description>Width of the canvas in px</description>
+        </property>
+
+         <property key="canvasHeight" type="integer" required="true" defaultValue="500">
+            <caption>Canvas Height</caption>
+            <category>Size</category>
+            <description>Height of the canvas in px</description>
+        </property> 
+
+        <property key="pieInnerRadius" type="integer" required="true" defaultValue="0">
+            <caption>Pie Inner Radius</caption>
+            <category>Size</category>
+            <description>Inner radius of the pie chart in %</description>
+        </property>
+
+        <property key="pieOuterRadius" type="integer" required="true" defaultValue="90">
+            <caption>Pie Outer Radius</caption>
+            <category>Size</category>
+            <description>Outer radius of the pie chart in %</description>
+        </property>
+
+         <property key="value" type="attribute" required="true">
+             <caption>Values of the chart</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+             <attributeTypes>
+                <attributeType name="String" />
+            </attributeTypes>
+        </property>
+
+        <property key="text" type="attribute" required="true">
+             <caption>Text of the chart</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+             <attributeTypes>
+                <attributeType name="String" />
+            </attributeTypes>
+        </property>
+
+        <property key="sortOrder" type="enumeration" defaultValue="valDesc" required="true">
+            <caption>Order by</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="none">Item listing</enumerationValue>
+                <enumerationValue key="random">Random</enumerationValue>
+                <enumerationValue key="valAsc">Value - Ascending</enumerationValue>
+                <enumerationValue key="valDesc">Value - Descending</enumerationValue>
+                <enumerationValue key="labAsc">Label - A to Z</enumerationValue>
+                <enumerationValue key="labDesc">Label - Z to A</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="pieColor" type="enumeration" defaultValue="colorScale10" required="true">
+            <caption>Colors of the chart</caption>
+            <category>Data</category>         
+            <description>The color to be displayed.
+             </description>
+           <enumerationValues>
+                <enumerationValue key="colorScale10">colorScale10</enumerationValue>
+                <enumerationValue key="colorScale20">colorScale20</enumerationValue>
+                <enumerationValue key="colorScale20b">colorScale20b</enumerationValue>
+                <enumerationValue key="colorScale20c">colorScale20c</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="enableSmallSegGroup" type="enumeration" defaultValue="disable" required="true">
+            <caption>Small Segment Grouping:</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="enable">Enable</enumerationValue>
+                <enumerationValue key="disable">Disable</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="groupSegWith" type="enumeration" defaultValue="percentage" required="true">
+            <caption>Segment With </caption>
+            <category>Data</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="value">Value</enumerationValue>
+                <enumerationValue key="percentage">Percentage</enumerationValue>
+            </enumerationValues>
+        </property>
+
+         <property key="segVal" type="integer" defaultValue="1" required="true">
+             <caption>Segment Under</caption>
+            <category>Data</category>         
+            <description>Value for which grouping should be done.
+             </description>
+        </property>
+
+        <property key="groupLabel" type="string" defaultValue="Other" required="true">
+             <caption>Group Label</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+        </property>
+
+        <property key="segmentColor" type="string" defaultValue="#cccccc" required="true">
+             <caption>Segment Color</caption>
+            <category>Data</category>         
+            <description>
+             </description>
+        </property>
+
+        <property key="outerLabelContent" type="enumeration" defaultValue="label" required="true">
+            <caption>Outer Label Content</caption>
+            <category>Labels-1</category>         
+            <description>The data you want to display as Outer Label.
+             </description>
+           <enumerationValues>
+                <enumerationValue key="none">None</enumerationValue>
+                <enumerationValue key="label">Label</enumerationValue>
+                <enumerationValue key="value">Value</enumerationValue>
+                <enumerationValue key="percentage">Percentage</enumerationValue>
+                <enumerationValue key="labelValue1">Label,Value (same line)</enumerationValue>
+                <enumerationValue key="labelValue2">Label,Value (separate lines)</enumerationValue>
+                <enumerationValue key="labelPercentage1">Label,Percentage (same line)</enumerationValue>
+                <enumerationValue key="labelPercentage2">Label,Percentage (separate lines)</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="distanceFromPie" type="integer" defaultValue="32" required="true">
+             <caption>Distance from Pie</caption>
+            <category>Labels-1</category>         
+            <description>The distance of the labels from pie in px.
+             </description>
+        </property>
+
+        <property key="innerLabelContent" type="enumeration" defaultValue="percentage" required="true">
+            <caption>Inner Label Content</caption>
+            <category>Labels-1</category>         
+            <description>The data you want to display as Inner Label.
+             </description>
+           <enumerationValues>
+                <enumerationValue key="none">None</enumerationValue>
+                <enumerationValue key="label">Label</enumerationValue>
+                <enumerationValue key="value">Value</enumerationValue>
+                <enumerationValue key="percentage">Percentage</enumerationValue>
+                <enumerationValue key="labelValue1">Label,Value (same line)</enumerationValue>
+                <enumerationValue key="labelValue2">Label,Value (separate lines)</enumerationValue>
+                <enumerationValue key="labelPercentage1">Label,Percentage (same line)</enumerationValue>
+                <enumerationValue key="labelPercentage2">Label,Percentage (separate lines)</enumerationValue>
+            </enumerationValues>
+        </property>
+
+         <property key="hideInnerContent" type="enumeration" defaultValue="never" required="true">
+            <caption>Hide Inner Labels</caption>
+            <category>Labels-1</category>         
+            <description>Labels will be hidden after a certain percentage if selected.
+             </description>
+           <enumerationValues>
+                <enumerationValue key="never">Never</enumerationValue>
+                <enumerationValue key="label">When under a certain % </enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="hideInnerContentValue" type="integer" defaultValue="1" required="true">
+             <caption>Hide when below</caption>
+            <category>Labels-1</category>         
+            <description>This applies when only ***When under a certain %*** is selected.
+             </description>
+        </property>
+
+        <property key="labelColor" type="string" required="true" defaultValue="#333333">
+            <caption>Label Color</caption>
+            <category>Labels-1</category>
+            <description>Font Color of Label</description>
+        </property>
+
+        <property key="labelFontStyle" type="enumeration" defaultValue="arial" required="true">
+            <caption>Label Font Style</caption>
+            <category>Labels-1</category>
+            <description>Font style of Label.</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="labelFontSize" type="integer" required="true" defaultValue="11">
+            <caption>Label Font Size</caption>
+            <category>Labels-1</category>
+            <description>Font size of Label in px.</description>
+        </property>
+
+        <property key="valueColor" type="string" required="true" defaultValue="#adadad">
+            <caption>Value Color</caption>
+            <category>Labels-1</category>
+            <description>Font Color of Value.</description>
+        </property>
+
+        <property key="valueFontStyle" type="enumeration" defaultValue="arial" required="true">
+            <caption>Value Font Style</caption>
+            <category>Labels-1</category>
+            <description>Font style of Value.</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="valueFontSize" type="integer" required="true" defaultValue="11">
+            <caption>Value Font Size</caption>
+            <category>Labels-1</category>
+            <description>Font size of Value in px.</description>
+        </property>
+
+         <property key="percentageColor" type="string" required="true" defaultValue="#FFFFFF">
+            <caption>Percentage Color</caption>
+            <category>Labels-2</category>
+            <description>Font Color of Percentage.</description>
+        </property>
+
+        <property key="percentageFontStyle" type="enumeration" defaultValue="arial" required="true">
+            <caption>Percentage Font Style</caption>
+            <category>Labels-2</category>
+            <description>Font style of Percentage.</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="percentageFontSize" type="integer" required="true" defaultValue="10">
+            <caption>Percentage Font Size</caption>
+            <category>Labels-2</category>
+            <description>Font size of Percentage in px.</description>
+        </property>
+
+        <property key="decimalPlacePercent" type="integer" required="true" defaultValue="0">
+            <caption>Decimal places for %</caption>
+            <category>Labels-2</category>
+            <description>Decimal places for percentage values.</description>
+        </property>
+
+        <property key="truncateLongLabel" type="enumeration" defaultValue="never" required="true">
+            <caption>Truncate Long Labels</caption>
+            <category>Labels-2</category>         
+            <description></description>
+           <enumerationValues>
+                <enumerationValue key="never">Never</enumerationValue>
+                <enumerationValue key="enabled">At certain length of characters </enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="truncateLabelLength" type="integer" required="true" defaultValue="30">
+            <caption>Trunacate Characters at </caption>
+            <category>Labels-2</category>
+            <description>Characters of the Label will be truncated after this.</description>
+        </property>
+
+         <property key="enableLines" type="enumeration" defaultValue="enable" required="true">
+            <caption>Show Label Lines</caption>
+            <category>Labels-2</category>         
+            <description>To display Label Lines
+             </description>
+           <enumerationValues>
+                <enumerationValue key="enable">Yes</enumerationValue>
+                <enumerationValue key="never">No</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="lineStyle" type="enumeration" defaultValue="straight" required="true">
+            <caption>Line Style</caption>
+            <category>Labels-2</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="straight">Straight</enumerationValue>
+                <enumerationValue key="curve">Curved</enumerationValue>
+            </enumerationValues>
+        </property>
+
+         <property key="lineColorSegment" type="enumeration" defaultValue="segment" required="true">
+            <caption>Line Color Style</caption>
+            <category>Labels-2</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="segment">Same as Segment</enumerationValue>
+                <enumerationValue key="color">Apply Color</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="lineColor" type="string" required="true" defaultValue="#333333">
+            <caption>Line Color </caption>
+            <category>Labels-2</category>
+            <description></description>
+        </property>
+
+        <property key="tooltipsEnable" type="enumeration" defaultValue="disable" required="true">
+            <caption>Tooltips</caption>
+            <category>Tooltips</category>         
+            <description>
+             </description>
+           <enumerationValues>
+                <enumerationValue key="enable">Enable</enumerationValue>
+                <enumerationValue key="disable">Disable</enumerationValue>
+            </enumerationValues>
+        </property>
+         <property key="tooltipFormat" type="string" required="true" defaultValue="{label}: {value}, {percentage}%">
+            <caption>Tooltip Format</caption>
+            <category>Tooltips</category>
+            <description>The data to be displayed in tooltip. eg.:{label}: {value}, {percentage}%</description>
+        </property>
+
+          <property key="tooltipColor" type="string" required="true" defaultValue="#efefef">
+            <caption>Font Color</caption>
+            <category>Tooltips</category>
+            <description>Font Color of Tooltip.</description>
+        </property>
+
+        <property key="tooltipFontStyle" type="enumeration" defaultValue="arial" required="true">
+            <caption>Font Style</caption>
+            <category>Tooltips</category>
+            <description>Font style of Tooltip.</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="tooltipFontSize" type="integer" required="true" defaultValue="10">
+            <caption>Font Size</caption>
+            <category>Tooltips</category>
+            <description>Font size of Tooltip in px.</description>
+        </property>
+
+        <property key="tooltipBgColor" type="string" required="true" defaultValue="#000000">
+            <caption>Background Color</caption>
+            <category>Tooltips</category>
+            <description>Background color of tooltip.</description>
+        </property>
+
+        <property key="tooltipBorderRad" type="integer" required="true" defaultValue="2">
+            <caption>Border Radius</caption>
+            <category>Tooltips</category>
+            <description>Background color of tooltip in px.</description>
+        </property>
+
+        <property key="tooltipPadding" type="integer" required="true" defaultValue="4">
+            <caption>Padding</caption>
+            <category>Tooltips</category>
+            <description>Tooltip padding in px.</description>
+        </property>
+
+        <property key="bgOpacity" type="string" required="true" defaultValue="0.50">
+            <caption>Background Opacity</caption>
+            <category>Tooltips</category>
+            <description>Tooltip background opacity.Should be less than 1.0</description>
+        </property>
+
+        <property key="fadeInSpeed" type="integer" required="true" defaultValue="250">
+            <caption>Fade-in Speed</caption>
+            <category>Tooltips</category>
+            <description>Tooltip fade-in speed.Should be less than 1000ms</description>
+        </property>
+
+         <property key="footerText" type="string" required="false" defaultValue="">
+            <caption>Footer Text</caption>
+            <category>Footer</category>
+            <description></description>
+        </property>
+
+        <property key="footerLocation" type="enumeration" defaultValue="bottomLeft" required="true">
+            <caption>Footer Location</caption>
+            <category>Footer</category>
+            <description>Location of the footer.</description>
+            <enumerationValues>
+                <enumerationValue key="bottomLeft">Bottom-left</enumerationValue>
+                <enumerationValue key="bottomCenter">Bottom-center</enumerationValue>
+                <enumerationValue key="bottomRight">Bottom-right</enumerationValue>
+            </enumerationValues>
+        </property>
+
+         <property key="footerColor" type="string" required="true" defaultValue="#999999">
+            <caption>Footer Font Color</caption>
+            <category>Footer</category>
+            <description>Font Color of Footer.</description>
+        </property>
+
+        <property key="footerFontStyle" type="enumeration" defaultValue="opensans" required="true">
+            <caption>Footer Font Style</caption>
+            <category>Footer</category>
+            <description>Font style of Footer.</description>
+            <enumerationValues>
+                <enumerationValue key="arial">Arial</enumerationValue>
+                <enumerationValue key="courier">Courier</enumerationValue>
+                <enumerationValue key="garamond">Garamond</enumerationValue>
+                <enumerationValue key="georgia">Georgia</enumerationValue>
+                <enumerationValue key="helvetica">Helvetica</enumerationValue>
+                <enumerationValue key="lusidasans">Lusida Sans</enumerationValue>
+                <enumerationValue key="timesnewroman">Times New Roman</enumerationValue>
+                <enumerationValue key="verdana">Verdana</enumerationValue>
+                <enumerationValue key="cinzel">Cinzel</enumerationValue>
+                 <enumerationValue key="exo">Exo</enumerationValue>
+                <enumerationValue key="opensans">Open Sans</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="footerFontSize" type="integer" required="true" defaultValue="10">
+            <caption>Footer Font Size</caption>
+            <category>Footer</category>
+            <description>Font size of Footer in px.</description>
+        </property>
+
+        <property key="loadEffect" type="enumeration" defaultValue="default" required="true">
+            <caption>Load Effects</caption>
+            <category>Effects</category>
+            <description></description>
+            <enumerationValues>
+                <enumerationValue key="none">None</enumerationValue>
+                <enumerationValue key="default">Default</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="loadSpeed" type="integer" required="true" defaultValue="1000">
+            <caption>Speed</caption>
+            <category>Effects</category>
+            <description>Load speed in ms.</description>
+        </property>
+
+        <property key="pieClickEffect" type="enumeration" defaultValue="bounce" required="true">
+            <caption>Pie Click Effect</caption>
+            <category>Effects</category>
+            <description>Click effect on Pie.</description>
+            <enumerationValues>
+                <enumerationValue key="none">None</enumerationValue>
+                <enumerationValue key="linear">Linear</enumerationValue>
+                <enumerationValue key="elastic">Elastic</enumerationValue>
+                <enumerationValue key="bounce">Bounce</enumerationValue>
+                <enumerationValue key="backingIn">Backing-in</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="pieClickSpeed" type="integer" required="true" defaultValue="400">
+            <caption>Click Speed</caption>
+            <category>Effects</category>
+            <description>Speed in ms.</description>
+        </property>
+
+        <property key="piePullOut" type="integer" required="true" defaultValue="8">
+            <caption>Pullout Speed</caption>
+            <category>Effects</category>
+            <description>Pie pull out in px.</description>
+        </property>
+
+        <property key="highlightPie" type="enumeration" defaultValue="yes" required="true">
+            <caption>Highlight Pie</caption>
+            <category>Effects</category>
+            <description>Highlight segment on mouseover</description>
+            <enumerationValues>
+                <enumerationValue key="yes">Yes</enumerationValue>
+                <enumerationValue key="no">No</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="highlightLuminosity" type="string" required="true" defaultValue="-0.2">
+            <caption>Highlight Luminosity</caption>
+            <category>Effects</category>
+            <description>Pie pull out in px.</description>
+        </property>
+
+       <property key="background" type="enumeration" defaultValue="null" required="true">
+            <caption>Misc Background</caption>
+            <category>Misc</category>
+            <description>Background color</description>
+            <enumerationValues>
+                <enumerationValue key="null">Transparent</enumerationValue>
+                <enumerationValue key="background">Background</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="backgroundColor" type="string" required="true" defaultValue="#FFFFFF">
+            <caption>Misc Background Color</caption>
+            <category>Misc</category>
+            <description>Background Color to be applied</description>
+        </property>
+
+        <property key="strokeColor" type="string" required="true" defaultValue="#FFFFFF">
+            <caption>Stroke Color</caption>
+            <category>Misc</category>
+            <description>Stroke Color to be applied</description>
+        </property>
+
+        <property key="segmentGradEnable" type="enumeration" defaultValue="enable" required="true">
+            <caption>Segment Gradients</caption>
+            <category>Misc</category>
+            <description></description>
+            <enumerationValues>
+                <enumerationValue key="enable">Enable</enumerationValue>
+                <enumerationValue key="disable">Disable</enumerationValue>
+            </enumerationValues>
+        </property>
+
+        <property key="enabledGradColor" type="string" required="true" defaultValue="#000000">
+            <caption>Enabled Color</caption>
+            <category>Misc</category>
+            <description>This applies when Segment Gradient is selected as background</description>
+        </property>
+
+        <property key="gradientPercent" type="integer" required="true" defaultValue="50">
+            <caption>Gradient percentage</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+        <property key="canvasPaddingTop" type="integer" required="true" defaultValue="5">
+            <caption>Canvas Padding Top</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+        <property key="canvasPaddingRight" type="integer" required="true" defaultValue="5">
+            <caption>Canvas Padding Right</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+        <property key="canvasPaddingBottom" type="integer" required="true" defaultValue="5">
+            <caption>Canvas Padding Bottom</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+        <property key="canvasPaddingLeft" type="integer" required="true" defaultValue="5">
+            <caption>Canvas Padding Left</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+        
+        <property key="xOffset" type="integer" required="true" defaultValue="5">
+            <caption>Pie Center Offset-X</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+        <property key="yOffset" type="integer" required="true" defaultValue="5">
+            <caption>Pie Center Offset-Y</caption>
+            <category>Misc</category>
+            <description></description>
+        </property>
+
+    </properties>
+</widget>

@@ -2,9 +2,10 @@ Buildfile: C:\Users\hp\Documents\Mendix\TamminaD3PieChartReview-main\deployment\
 
 deploy:
     [unzip] Expanding: C:\Program Files\Mendix\7.0.2\modeler\deployment.mxz into C:\Users\hp\Documents\Mendix\TamminaD3PieChartReview-main\deployment
+     [copy] Copying 15 files to C:\Users\hp\Documents\Mendix\TamminaD3PieChartReview-main\deployment\model\lib\userlib
 
 BUILD SUCCESSFUL
-Total time: 0 seconds
+Total time: 1 second
 
 
 
